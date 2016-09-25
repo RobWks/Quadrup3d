@@ -28,15 +28,25 @@ class quadrup3d:
           #self.positionLeg(i,properties['initial_x'],properties['initial_y'],properties['initial_z'])
 
     def run(self):
+        """
+        while True:
+    	dif = float(raw_input('dif: '))
+    	self.positionLeg(leg=0,x=0,y=0,z=dif)
+            self.positionLeg(leg=1,x=0,y=0,z=dif)
+            self.positionLeg(leg=2,x=0,y=0,z=dif)
+            self.positionLeg(leg=3,x=0,y=0,z=dif)
+            time.sleep(1)
+        """
         for leg in range(4):
             self.positionLeg(leg=leg,x=0,y=0,z=0)
-        time.sleep(5)
-        self.walk(5)
+        self.positionLeg(leg=1,x=0,y=0,z=60)
+	#time.sleep(5)
+        #self.walk(5)
 
     def walk(self,num_cycles):
         pi = math.pi
 
-        S = 100 #Step length in mm
+        S = 70 #Step length in mm
         H = 60 #Step height in mm
         T = 2 #Gait cycle in seconds
         R = 0.05 #Resolution of gait cycle in seconds
@@ -100,7 +110,7 @@ class quadrup3d:
         else: y-=p['initial_y'] 
 
         #To place in start postion for gait
-        if leg==0 or leg ==1: y-=50
+        if leg==0 or leg ==1: y-=100
 
         #Local to global coordinate transform
         #Swap X and Y
@@ -173,9 +183,9 @@ ROBOT_PROPERTIES = OrderedDict([
     ('tibiaLength', 140.0),
     ('coxaLength', 46.0),
     ('speed', 16),
-    ('initial_x', 105),
-    ('initial_y', 85),
-    ('initial_z', -90),
+    ('initial_x', 160),
+    ('initial_y', 80),
+    ('initial_z', -100),
 ])
 
 if __name__ == '__main__':
